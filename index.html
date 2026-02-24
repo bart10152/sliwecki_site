@@ -85,13 +85,13 @@
     .phone {
       margin-top: 12px;
       font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+      font-weight: 400; /* Regular weight */
+      letter-spacing: normal;
     }
 
     .phone a {
       color: var(--fg);
-      text-decoration: none; /* Removed the dotted line/underline */
+      text-decoration: none;
     }
 
     footer {
@@ -101,7 +101,7 @@
       font-size: 0.75rem;
       opacity: 0.5;
       display: flex;
-      flex-direction: column; /* Stacked by default (mobile) */
+      flex-direction: column;
       align-items: center;
       gap: 4px;
     }
@@ -111,7 +111,7 @@
       text-decoration: underline;
     }
 
-    /* Tablet/Laptop: Switch footer to one line */
+    /* Tablet/Laptop footer layout */
     @media (min-width: 600px) {
       footer {
         flex-direction: row;
@@ -119,7 +119,6 @@
         gap: 12px;
       }
       
-      /* Add a separator dot between items on wide screens */
       footer div:not(:last-child)::after {
         content: "•";
         margin-left: 12px;
