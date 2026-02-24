@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bartosz Śliwecki</title>
 
+  <!-- Google Font: Saira -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=EB+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #000;
-      --fg: #fff;
+      --bg: #1c1f24;   /* dark graphite */
+      --fg: #f2f2f2;   /* softened white */
     }
 
     html, body {
@@ -28,7 +29,7 @@
       justify-content: center;
       text-align: center;
       padding: 24px;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: "Saira", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     }
 
     .wrap {
@@ -37,11 +38,10 @@
     }
 
     .quote {
-      font-family: "EB Garamond", Georgia, "Times New Roman", serif;
       font-style: italic;
       margin: 0 0 18px 0;
       font-size: 1.15rem;
-      opacity: 0.95;
+      opacity: 0.9;
     }
 
     .name {
@@ -56,8 +56,8 @@
     }
 
     button {
-      background: #fff;
-      color: #000;
+      background: #f2f2f2;
+      color: #1c1f24;
       border: none;
       padding: 10px 18px;
       font-size: 1rem;
@@ -77,16 +77,25 @@
       font-size: 1.05rem;
       opacity: 0.9;
     }
+
+    .phone a {
+      color: var(--fg);
+      text-decoration: none;
+    }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <p class="quote">"Przepraszam, ale jestem obecnie zajęty zabezpieczaniem swoich klientów. Ładna strona jest teraz nie istotna".</p>
+    <p class="quote">
+      "Przepraszam, ale jestem obecnie zajęty zabezpieczaniem swoich klientów. 
+      Ładna strona jest teraz nie istotna".
+    </p>
+
     <p class="name">Bartosz Śliwecki</p>
 
     <div class="phone-container">
-      <button id="revealBtn">Pokaż numer</button>
+      <button id="revealBtn">Porozmawiajmy!</button>
       <div id="phoneOutput" class="phone"></div>
     </div>
   </main>
@@ -102,7 +111,7 @@
       const telLink = `${part1}${part2}${part3}${part4}`;
 
       const output = document.getElementById("phoneOutput");
-      output.innerHTML = `<a href="tel:${telLink}" style="color:white; text-decoration:none;">${fullNumber}</a>`;
+      output.innerHTML = `<a href="tel:${telLink}">${fullNumber}</a>`;
 
       this.style.display = "none";
     });
