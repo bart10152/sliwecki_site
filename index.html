@@ -43,7 +43,7 @@
     }
 
     .wrap {
-      max-width: 42rem; /* Zwiększone, aby tekst mieścił się w 2 liniach */
+      max-width: 44rem; 
       line-height: 1.6; 
       flex: 1; 
       display: flex;
@@ -55,9 +55,9 @@
     .quote {
       font-style: italic;
       margin: 0; 
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 400;
-      min-height: 4.5rem; /* Rezerwuje miejsce, by strona nie skakała przy ładowaniu */
+      min-height: 4.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -67,7 +67,7 @@
       margin: 40px 0; 
       font-weight: 800;
       font-size: 2.2rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #FFF;
     }
@@ -95,8 +95,8 @@
     }
 
     .phone {
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 1.9rem;
+      font-weight: 400; /* Odchudzona waga numeru */
       opacity: 0;
       transition: opacity 0.8s ease;
     }
@@ -107,15 +107,16 @@
 
     .phone a {
       color: var(--fg);
-      text-decoration: none; /* Brak linii pod numerem */
+      text-decoration: none;
+      letter-spacing: 0.05em;
     }
 
     footer {
       width: 100%;
       padding-top: 40px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 400;
-      opacity: 0.7; 
+      opacity: 0.6; 
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -124,9 +125,8 @@
 
     footer a {
       color: var(--fg);
-      font-weight: 600;
       text-decoration: none;
-      border-bottom: 1px solid rgba(234, 226, 183, 0.4);
+      border-bottom: 1px solid rgba(234, 226, 183, 0.3);
     }
 
     @media (min-width: 600px) {
@@ -138,25 +138,26 @@
       footer div:not(:last-child)::after {
         content: "|";
         margin-left: 20px;
+        opacity: 0.5;
       }
     }
 
     @media (max-width: 480px) {
-      .quote { font-size: 1.1rem; }
-      .name { font-size: 1.6rem; }
+      .quote { font-size: 1.15rem; }
+      .name { font-size: 1.7rem; }
+      .phone { font-size: 1.6rem; }
     }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <p class="quote" id="dynamicQuote">
-      </p>
+    <p class="quote" id="dynamicQuote"></p>
 
     <p class="name">Bartosz Śliwecki</p>
 
     <div class="phone-container">
-      <button id="revealBtn">Porozmawajmy :)</button>
+      <button id="revealBtn">Ustalmy priorytety</button>
       <div id="phoneOutput" class="phone"></div>
     </div>
   </main>
@@ -167,26 +168,26 @@
   </footer>
 
   <script>
-    // Baza tekstów
     const quotes = [
       "Zajmuję się zabezpieczaniem przyszłości moich klientów. Estetyka strony może poczekać.",
       "Zaufanie buduje się latami, a nie layoutem. Jestem tam, gdzie potrzebują mnie klienci.",
-      "W ubezpieczeniach liczą się fakty i liczby. Na design przyjdzie czas po godzinach pracy.",
-      "Najlepsza polisa to taka, która działa. Moja strona nie musi – ja muszę być skuteczny.",
+      "Przepraszam, jestem zajęty zabezpieczaniem moich klientów. Strona musi poczekać, ich spokój nie może.",
+      "Najlepsza polisa to taka, która działa. Moja strona nie musi – to ja muszę być skuteczny.",
       "Dobra strona www nie wypłaci odszkodowania. Dobrze dobrany plan – owszem."
+      "Zamiast dopieszczać stronę, dopieszczam strategie dla moich klientów. Odezwij się, jeśli potrzebujesz konkretów."
+      "Zaufanie buduję przy kawie i w rozmowie, nie na serwerze. Strona powstanie, gdy wszyscy moi klienci będą już bezpieczni."
     ];
 
-    // Losowanie tekstu przy załadowaniu
     window.onload = function() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById("dynamicQuote").innerText = quotes[randomIndex];
+      // Dodawanie cudzysłowów do wylosowanego tekstu
+      document.getElementById("dynamicQuote").innerText = `"${quotes[randomIndex]}"`;
     };
 
-    // Obsługa przycisku telefonu
     document.getElementById("revealBtn").addEventListener("click", function () {
-      const p1 = "+48", p2 = "508", p3 = "473", p4 = "105";
-      const fullNumber = p1 + " " + p2 + " " + p3 + " " + p4;
-      const telLink = p1 + p2 + p3 + p4;
+      const p = ["+48", "508", "473", "105"];
+      const fullNumber = p.join(" ");
+      const telLink = p.join("");
       const output = document.getElementById("phoneOutput");
       
       this.style.display = "none";
