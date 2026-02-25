@@ -7,27 +7,23 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
-
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #3D405B;   /* Głęboki, spokojny granatowo-grafitowy */
-      --fg: #F4F1DE;   /* Ciepła kość słoniowa */
+      /* Nowe, mocniejsze kolory: Głęboki granat i szlachetne złoto */
+      --bg: #1A1C2C;   
+      --fg: #EAE2B7;   
+      --accent: #D62828; /* Dyskretny kolor akcentu dla linków */
     }
 
     * {
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Page Fade-In Animation */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -45,69 +41,63 @@
       justify-content: center;
       text-align: center;
       padding: 40px 24px;
-      font-family: "Saira", system-ui, -apple-system, sans-serif;
+      font-family: "Saira", system-ui, sans-serif;
     }
 
     .wrap {
-      max-width: 32rem;
-      /* Klucz do elegancji: duża interlinia */
+      max-width: 36rem; /* Nieco szerzej dla większej czcionki */
       line-height: 1.8; 
       flex: 1; 
       display: flex;
       flex-direction: column;
       justify-content: center;
-      animation: fadeIn 1.2s ease-out forwards;
+      animation: fadeIn 1s ease-out forwards;
     }
 
     .quote {
       font-style: italic;
       margin: 0; 
-      font-size: 1.15rem;
-      font-weight: 300;
-      opacity: 0.85;
-      letter-spacing: 0.01em;
+      font-size: 1.25rem; /* Powiększona czcionka */
+      font-weight: 400;   /* Standardowa waga dla czytelności */
+      opacity: 1;         /* Pełne krycie, by nie było "wyprane" */
     }
 
     .name {
-      /* Zwiększony odstęp dla harmonii */
       margin: 50px 0; 
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 0.2em; /* Szerokie światło w nazwisku buduje prestiż */
+      font-weight: 800;   /* Bardzo wyraźne nazwisko */
+      font-size: 2rem;    /* Wyraźnie większe */
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: #FFF;        /* Czysta biel dla nazwiska, by "biło" po oczach */
     }
 
     .phone-container {
-      margin: 0;
-      min-height: 70px; 
+      min-height: 80px; 
     }
 
     button {
       background: var(--fg);
       color: var(--bg);
-      border: 1px solid var(--fg);
-      padding: 14px 32px;
-      font-size: 0.9rem;
-      font-weight: 700;
+      border: none;
+      padding: 16px 36px;
+      font-size: 1.1rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
       cursor: pointer;
-      border-radius: 2px;
-      font-family: inherit;
-      transition: all 0.4s ease;
+      border-radius: 4px;
+      transition: transform 0.2s, background 0.3s;
     }
 
     button:hover {
-      background: transparent;
-      color: var(--fg);
+      transform: scale(1.05);
+      background: #FFF;
     }
 
     .phone {
-      font-size: 1.6rem;
-      font-weight: 300;
-      letter-spacing: 0.05em;
+      font-size: 1.8rem;
+      font-weight: 600;
       opacity: 0;
-      transition: opacity 1s ease;
+      transition: opacity 0.8s ease;
     }
 
     .phone.visible {
@@ -117,54 +107,42 @@
     .phone a {
       color: var(--fg);
       text-decoration: none;
-      border-bottom: 1px solid rgba(244, 241, 222, 0.3);
-      padding-bottom: 4px;
-      transition: border-color 0.3s;
-    }
-
-    .phone a:hover {
-      border-bottom-color: var(--fg);
+      border-bottom: 2px solid var(--fg);
     }
 
     footer {
       width: 100%;
-      max-width: 800px;
-      padding-top: 60px;
-      font-size: 0.7rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      opacity: 0; 
-      animation: fadeIn 1s ease-out 0.8s forwards;
+      padding-top: 40px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      opacity: 0.7; 
+      animation: fadeIn 1s ease-out 0.5s forwards;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     footer a {
       color: var(--fg);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(244, 241, 222, 0.5);
+      font-weight: 600;
     }
 
-    /* Tablet/Laptop footer layout */
     @media (min-width: 600px) {
       footer {
         flex-direction: row;
         justify-content: center;
         gap: 20px;
       }
-      
       footer div:not(:last-child)::after {
-        content: "|"; /* Pionowa kreska jest bardziej architektoniczna niż kropka */
+        content: "|";
         margin-left: 20px;
-        opacity: 0.3;
       }
     }
 
     @media (max-width: 480px) {
-      .quote { font-size: 1.05rem; line-height: 1.7; }
-      .name { font-size: 1.3rem; margin: 40px 0; }
+      .quote { font-size: 1.15rem; }
+      .name { font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -172,14 +150,14 @@
 <body>
   <main class="wrap">
     <p class="quote">
-      "Przepraszam, ale jestem obecnie zajęty zabezpieczaniem swoich klientów. 
+      "Przepraszam, ale jestem obecnie zajęty zabezpieczaniem swoich klientów.<br>
       Ładna strona jest teraz nieistotna".
     </p>
 
     <p class="name">Bartosz Śliwecki</p>
 
     <div class="phone-container">
-      <button id="revealBtn">Najpierw porozmawiajmy ></button>
+      <button id="revealBtn">Ustalmy priorytety</button>
       <div id="phoneOutput" class="phone"></div>
     </div>
   </main>
@@ -191,24 +169,16 @@
 
   <script>
     document.getElementById("revealBtn").addEventListener("click", function () {
-      const p1 = "+48";
-      const p2 = "508";
-      const p3 = "473";
-      const p4 = "105";
-
+      const p1 = "+48", p2 = "508", p3 = "473", p4 = "105";
       const fullNumber = p1 + " " + p2 + " " + p3 + " " + p4;
       const telLink = p1 + p2 + p3 + p4;
-
       const output = document.getElementById("phoneOutput");
       
       this.style.display = "none";
       output.innerHTML = '<a href="tel:' + telLink + '">' + fullNumber + '</a>';
       
-      setTimeout(() => {
-        output.classList.add('visible');
-      }, 50);
+      setTimeout(() => { output.classList.add('visible'); }, 50);
     });
   </script>
-
 </body>
 </html>
