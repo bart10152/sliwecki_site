@@ -96,7 +96,7 @@
 
     .phone {
       font-size: 1.9rem;
-      font-weight: 400; /* Odchudzona waga numeru */
+      font-weight: 400;
       opacity: 0;
       transition: opacity 0.8s ease;
     }
@@ -168,20 +168,23 @@
   </footer>
 
   <script>
+    // Baza tekstów - teraz z poprawnymi przecinkami na końcu linii
     const quotes = [
       "Zajmuję się zabezpieczaniem przyszłości moich klientów. Estetyka strony może poczekać.",
       "Zaufanie buduje się latami, a nie layoutem. Jestem tam, gdzie potrzebują mnie klienci.",
       "Przepraszam, jestem zajęty zabezpieczaniem moich klientów. Strona musi poczekać, ich spokój nie może.",
       "Najlepsza polisa to taka, która działa. Moja strona nie musi – to ja muszę być skuteczny.",
-      "Dobra strona www nie wypłaci odszkodowania. Dobrze dobrany plan – owszem."
-      "Zamiast dopieszczać stronę, dopieszczam strategie dla moich klientów. Odezwij się, jeśli potrzebujesz konkretów."
-      "Zaufanie buduję przy kawie i w rozmowie, nie na serwerze. Strona powstanie, gdy wszyscy moi klienci będą już bezpieczni."
+      "Dobra strona www nie wypłaci odszkodowania. Dobrze dobrany plan – owszem.",
+      "Zamiast dopieszczać stronę, dopieszczam strategie dla moich klientów. Odezwij się, jeśli potrzebujesz konkretów.",
+      "Zaufanie buduję przy kawie i w rozmowie, nie na serwerze. Strona powstanie, gdy wszyscy klienci będą już bezpieczni."
     ];
 
     window.onload = function() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
-      // Dodawanie cudzysłowów do wylosowanego tekstu
-      document.getElementById("dynamicQuote").innerText = `"${quotes[randomIndex]}"`;
+      const quoteElement = document.getElementById("dynamicQuote");
+      if (quoteElement) {
+        quoteElement.innerText = `"${quotes[randomIndex]}"`;
+      }
     };
 
     document.getElementById("revealBtn").addEventListener("click", function () {
@@ -193,7 +196,9 @@
       this.style.display = "none";
       output.innerHTML = '<a href="tel:' + telLink + '">' + fullNumber + '</a>';
       
-      setTimeout(() => { output.classList.add('visible'); }, 50);
+      setTimeout(() => { 
+        if (output) output.classList.add('visible'); 
+      }, 50);
     });
   </script>
 </body>
