@@ -11,10 +11,8 @@
 
   <style>
     :root {
-      /* Nowe, mocniejsze kolory: Głęboki granat i szlachetne złoto */
       --bg: #1A1C2C;   
       --fg: #EAE2B7;   
-      --accent: #D62828; /* Dyskretny kolor akcentu dla linków */
     }
 
     * {
@@ -45,8 +43,8 @@
     }
 
     .wrap {
-      max-width: 36rem; /* Nieco szerzej dla większej czcionki */
-      line-height: 1.8; 
+      max-width: 42rem; /* Zwiększone, aby tekst mieścił się w 2 liniach */
+      line-height: 1.6; 
       flex: 1; 
       display: flex;
       flex-direction: column;
@@ -57,18 +55,21 @@
     .quote {
       font-style: italic;
       margin: 0; 
-      font-size: 1.25rem; /* Powiększona czcionka */
-      font-weight: 400;   /* Standardowa waga dla czytelności */
-      opacity: 1;         /* Pełne krycie, by nie było "wyprane" */
+      font-size: 1.3rem;
+      font-weight: 400;
+      min-height: 4.5rem; /* Rezerwuje miejsce, by strona nie skakała przy ładowaniu */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .name {
-      margin: 50px 0; 
-      font-weight: 800;   /* Bardzo wyraźne nazwisko */
-      font-size: 2rem;    /* Wyraźnie większe */
+      margin: 40px 0; 
+      font-weight: 800;
+      font-size: 2.2rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #FFF;        /* Czysta biel dla nazwiska, by "biło" po oczach */
+      color: #FFF;
     }
 
     .phone-container {
@@ -79,7 +80,7 @@
       background: var(--fg);
       color: var(--bg);
       border: none;
-      padding: 16px 36px;
+      padding: 18px 40px;
       font-size: 1.1rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -94,7 +95,7 @@
     }
 
     .phone {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 600;
       opacity: 0;
       transition: opacity 0.8s ease;
@@ -106,8 +107,7 @@
 
     .phone a {
       color: var(--fg);
-      text-decoration: none;
-      border-bottom: 2px solid var(--fg);
+      text-decoration: none; /* Brak linii pod numerem */
     }
 
     footer {
@@ -116,7 +116,6 @@
       font-size: 0.85rem;
       font-weight: 400;
       opacity: 0.7; 
-      animation: fadeIn 1s ease-out 0.5s forwards;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -126,6 +125,8 @@
     footer a {
       color: var(--fg);
       font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(234, 226, 183, 0.4);
     }
 
     @media (min-width: 600px) {
@@ -141,7 +142,7 @@
     }
 
     @media (max-width: 480px) {
-      .quote { font-size: 1.15rem; }
+      .quote { font-size: 1.1rem; }
       .name { font-size: 1.6rem; }
     }
   </style>
@@ -149,15 +150,13 @@
 
 <body>
   <main class="wrap">
-    <p class="quote">
-      "Przepraszam, ale jestem obecnie zajęty zabezpieczaniem swoich klientów.<br>
-      Ładna strona jest teraz nieistotna".
-    </p>
+    <p class="quote" id="dynamicQuote">
+      </p>
 
     <p class="name">Bartosz Śliwecki</p>
 
     <div class="phone-container">
-      <button id="revealBtn">Ustalmy priorytety</button>
+      <button id="revealBtn">Porozmawajmy :)</button>
       <div id="phoneOutput" class="phone"></div>
     </div>
   </main>
@@ -168,6 +167,22 @@
   </footer>
 
   <script>
+    // Baza tekstów
+    const quotes = [
+      "Zajmuję się zabezpieczaniem przyszłości moich klientów. Estetyka strony może poczekać.",
+      "Zaufanie buduje się latami, a nie layoutem. Jestem tam, gdzie potrzebują mnie klienci.",
+      "W ubezpieczeniach liczą się fakty i liczby. Na design przyjdzie czas po godzinach pracy.",
+      "Najlepsza polisa to taka, która działa. Moja strona nie musi – ja muszę być skuteczny.",
+      "Dobra strona www nie wypłaci odszkodowania. Dobrze dobrany plan – owszem."
+    ];
+
+    // Losowanie tekstu przy załadowaniu
+    window.onload = function() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("dynamicQuote").innerText = quotes[randomIndex];
+    };
+
+    // Obsługa przycisku telefonu
     document.getElementById("revealBtn").addEventListener("click", function () {
       const p1 = "+48", p2 = "508", p3 = "473", p4 = "105";
       const fullNumber = p1 + " " + p2 + " " + p3 + " " + p4;
