@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="favicon.png" type="image/png">
@@ -15,17 +15,19 @@
 
   <style>
     :root {
-      --bg: #3D405B;   /* dark graphite */
-      --fg: #F4F1DE;   /* softened white */
+      --bg: #3D405B;   /* Głęboki, spokojny granatowo-grafitowy */
+      --fg: #F4F1DE;   /* Ciepła kość słoniowa */
     }
 
     * {
       box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* Page Fade-In Animation */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -42,65 +44,70 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 24px;
+      padding: 40px 24px;
       font-family: "Saira", system-ui, -apple-system, sans-serif;
     }
 
     .wrap {
-      max-width: 34rem;
-      line-height: 1.4;
+      max-width: 32rem;
+      /* Klucz do elegancji: duża interlinia */
+      line-height: 1.8; 
       flex: 1; 
       display: flex;
       flex-direction: column;
       justify-content: center;
-      /* Animation for whole content */
-      animation: fadeIn 1s ease-out forwards;
+      animation: fadeIn 1.2s ease-out forwards;
     }
 
     .quote {
       font-style: italic;
       margin: 0; 
       font-size: 1.15rem;
-      opacity: 0.9;
+      font-weight: 300;
+      opacity: 0.85;
+      letter-spacing: 0.01em;
     }
 
     .name {
-      /* Symmetrical 30px spacing */
-      margin: 30px 0; 
+      /* Zwiększony odstęp dla harmonii */
+      margin: 50px 0; 
       font-weight: 700;
-      font-size: 1.6rem;
-      letter-spacing: 0.01em;
+      font-size: 1.5rem;
+      letter-spacing: 0.2em; /* Szerokie światło w nazwisku buduje prestiż */
       text-transform: uppercase;
     }
 
     .phone-container {
       margin: 0;
-      min-height: 60px; 
+      min-height: 70px; 
     }
 
     button {
-      background: #F4F1DE;
-      color: #3D405B;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
+      background: var(--fg);
+      color: var(--bg);
+      border: 1px solid var(--fg);
+      padding: 14px 32px;
+      font-size: 0.9rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       cursor: pointer;
-      border-radius: 4px;
+      border-radius: 2px;
       font-family: inherit;
-      transition: opacity 0.3s ease;
+      transition: all 0.4s ease;
     }
 
     button:hover {
-      opacity: 0.8;
+      background: transparent;
+      color: var(--fg);
     }
 
     .phone {
-      font-size: 1.4rem;
-      font-weight: 400; /* Regular as requested */
-      letter-spacing: normal;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
       opacity: 0;
-      transition: opacity 0.8s ease;
+      transition: opacity 1s ease;
     }
 
     .phone.visible {
@@ -110,24 +117,34 @@
     .phone a {
       color: var(--fg);
       text-decoration: none;
+      border-bottom: 1px solid rgba(244, 241, 222, 0.3);
+      padding-bottom: 4px;
+      transition: border-color 0.3s;
+    }
+
+    .phone a:hover {
+      border-bottom-color: var(--fg);
     }
 
     footer {
       width: 100%;
       max-width: 800px;
-      padding-top: 40px;
-      font-size: 0.75rem;
+      padding-top: 60px;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       opacity: 0; 
-      animation: fadeIn 1s ease-out 0.5s forwards; /* Delayed appearance */
+      animation: fadeIn 1s ease-out 0.8s forwards;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 8px;
     }
 
     footer a {
       color: var(--fg);
-      text-decoration: underline;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(244, 241, 222, 0.5);
     }
 
     /* Tablet/Laptop footer layout */
@@ -135,19 +152,19 @@
       footer {
         flex-direction: row;
         justify-content: center;
-        gap: 12px;
+        gap: 20px;
       }
       
       footer div:not(:last-child)::after {
-        content: "•";
-        margin-left: 12px;
-        opacity: 0.5;
+        content: "|"; /* Pionowa kreska jest bardziej architektoniczna niż kropka */
+        margin-left: 20px;
+        opacity: 0.3;
       }
     }
 
     @media (max-width: 480px) {
-      .quote { font-size: 1rem; }
-      .name { font-size: 1.4rem; margin: 24px 0; }
+      .quote { font-size: 1.05rem; line-height: 1.7; }
+      .name { font-size: 1.3rem; margin: 40px 0; }
     }
   </style>
 </head>
@@ -162,7 +179,7 @@
     <p class="name">Bartosz Śliwecki</p>
 
     <div class="phone-container">
-      <button id="revealBtn">Ustalmy priorytety</button>
+      <button id="revealBtn">Najpierw porozmawiajmy ></button>
       <div id="phoneOutput" class="phone"></div>
     </div>
   </main>
@@ -189,7 +206,7 @@
       
       setTimeout(() => {
         output.classList.add('visible');
-      }, 10);
+      }, 50);
     });
   </script>
 
