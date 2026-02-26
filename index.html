@@ -7,19 +7,24 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #1A1C2C;   
-      --fg: #EAE2B7;   
+      /* Paleta barw MacBook Air Silver / Space Gray */
+      --bg: #1D1D1F;       /* Głęboki grafit obudowy */
+      --fg: #E8E8ED;       /* Jasne srebro (aluminium) */
+      --pure-white: #FFFFFF;
+      --midnight: #121213;  /* Prawie czerń do tekstów na przycisku */
     }
 
     * {
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Subtelna animacja wejścia */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -39,7 +44,7 @@
       justify-content: center;
       text-align: center;
       padding: 40px 24px;
-      font-family: "Saira", system-ui, sans-serif;
+      font-family: "Saira", system-ui, -apple-system, sans-serif;
     }
 
     .wrap {
@@ -49,27 +54,28 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      animation: fadeIn 1s ease-out forwards;
+      animation: fadeIn 1.2s ease-out forwards;
     }
 
     .quote {
       font-style: italic;
       margin: 0; 
       font-size: 1.35rem;
-      font-weight: 400;
-      min-height: 4.5rem;
+      font-weight: 300;
+      min-height: 4.5rem; 
       display: flex;
       align-items: center;
       justify-content: center;
+      color: var(--fg);
     }
 
     .name {
       margin: 40px 0; 
       font-weight: 800;
-      font-size: 2.2rem;
-      letter-spacing: 0.12em;
+      font-size: 2.3rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #FFF;
+      color: var(--pure-white); /* Najjaśniejszy punkt strony */
     }
 
     .phone-container {
@@ -78,27 +84,29 @@
 
     button {
       background: var(--fg);
-      color: var(--bg);
-      border: none;
-      padding: 18px 40px;
+      color: var(--midnight);
+      border: 1px solid var(--fg);
+      padding: 18px 42px;
       font-size: 1.1rem;
       font-weight: 800;
       text-transform: uppercase;
       cursor: pointer;
       border-radius: 4px;
-      transition: transform 0.2s, background 0.3s;
+      font-family: inherit;
+      transition: all 0.3s ease;
     }
 
     button:hover {
-      transform: scale(1.05);
-      background: #FFF;
+      background: transparent;
+      color: var(--fg);
+      transform: translateY(-2px);
     }
 
     .phone {
-      font-size: 1.9rem;
-      font-weight: 400;
+      font-size: 2rem;
+      font-weight: 400; /* Lekka waga numeru */
       opacity: 0;
-      transition: opacity 0.8s ease;
+      transition: opacity 1s ease;
     }
 
     .phone.visible {
@@ -108,27 +116,30 @@
     .phone a {
       color: var(--fg);
       text-decoration: none;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
     }
 
     footer {
       width: 100%;
-      padding-top: 40px;
-      font-size: 0.8rem;
+      padding-top: 50px;
+      font-size: 0.75rem;
       font-weight: 400;
-      opacity: 0.6; 
+      opacity: 0.4; 
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     footer a {
       color: var(--fg);
       text-decoration: none;
-      border-bottom: 1px solid rgba(234, 226, 183, 0.3);
+      border-bottom: 1px solid rgba(232, 232, 237, 0.2);
     }
 
+    /* Responsywność dla komputerów i telefonów */
     @media (min-width: 600px) {
       footer {
         flex-direction: row;
@@ -138,7 +149,7 @@
       footer div:not(:last-child)::after {
         content: "|";
         margin-left: 20px;
-        opacity: 0.5;
+        opacity: 0.3;
       }
     }
 
@@ -157,7 +168,7 @@
     <p class="name">Bartosz Śliwecki</p>
 
     <div class="phone-container">
-      <button id="revealBtn">Porozmawiajmy</button>
+      <button id="revealBtn">Ustalmy priorytety</button>
       <div id="phoneOutput" class="phone"></div>
     </div>
   </main>
@@ -168,17 +179,18 @@
   </footer>
 
   <script>
-    // Baza tekstów - teraz z poprawnymi przecinkami na końcu linii
+    // Twoja baza tekstów
     const quotes = [
       "Zajmuję się zabezpieczaniem przyszłości moich klientów. Estetyka strony może poczekać.",
       "Zaufanie buduje się latami, a nie layoutem. Jestem tam, gdzie potrzebują mnie klienci.",
       "Przepraszam, jestem zajęty zabezpieczaniem moich klientów. Strona musi poczekać, ich spokój nie może.",
       "Najlepsza polisa to taka, która działa. Moja strona nie musi – to ja muszę być skuteczny.",
-      "Dobra strona www nie wypłaci odszkodowania. Dobrze dobrany plan – owszem.",
+      "Dobra strategia nie wypłaci odszkodowania, ale dobrze dobrany plan – owszem.",
       "Zamiast dopieszczać stronę, dopieszczam strategie dla moich klientów. Odezwij się, jeśli potrzebujesz konkretów.",
       "Zaufanie buduję przy kawie i w rozmowie, nie na serwerze. Strona powstanie, gdy wszyscy klienci będą już bezpieczni."
     ];
 
+    // Losowanie cytatu przy wejściu na stronę
     window.onload = function() {
       const randomIndex = Math.floor(Math.random() * quotes.length);
       const quoteElement = document.getElementById("dynamicQuote");
@@ -187,6 +199,7 @@
       }
     };
 
+    // Skrypt odkrywania numeru telefonu
     document.getElementById("revealBtn").addEventListener("click", function () {
       const p = ["+48", "508", "473", "105"];
       const fullNumber = p.join(" ");
