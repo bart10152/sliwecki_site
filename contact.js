@@ -1,12 +1,12 @@
 // Baza Twoich haseł
 const quotes = [
-    "Zajmuję się zabezpieczaniem przyszłości moich klientów. Estetyka strony może poczekać.",
-    "Zaufanie buduje się latami, a nie layoutem. Jestem tam, gdzie potrzebują mnie klienci.",
-    "Przepraszam, jestem zajęty zabezpieczaniem moich klientów. Strona musi poczekać, ich spokój nie może.",
-    "Najlepsza polisa to taka, która działa. Moja strona nie musi – to ja muszę być skuteczny.",
-    "Dobra strategia nie wypłaci odszkodowania, ale dobrze dobrany plan – owszem.",
-    "Zamiast dopieszczać stronę, dopieszczam strategie dla moich klientów. Odezwij się, jeśli potrzebujesz konkretów.",
-    "Zaufanie buduję przy kawie i w rozmowie, nie na serwerze. Strona powstanie, gdy wszyscy moi klienci będą już bezpieczni."
+    "Zajmuj\u0119 si\u0119 zabezpieczaniem przysz\u0142o\u015bci moich klient\u00f3w. Estetyka strony mo\u017ce poczeka\u0107.",
+    "Zaufanie buduje si\u0119 latami, a nie layoutem. Jestem tam, gdzie potrzebuj\u0105 mnie klienci.",
+    "Przepraszam, jestem zaj\u0119ty zabezpieczaniem moich klient\u00f3w. Strona musi poczeka\u0107, ich spok\u00f3j nie mo\u017ce.",
+    "Najlepsza polisa to taka, kt\u00f3ra dzia\u0142a. Moja strona nie musi \u2013 to ja musz\u0119 by\u0107 skuteczny.",
+    "Dobra strategia nie wyp\u0142aci odszkodowania, ale dobrze dobrany plan \u2013 owszem.",
+    "Zamiast dopieszcza\u0107 stron\u0119, dopieszczam strategie dla moich klient\u00f3w. Odezwij si\u0119, je\u015bli potrzebujesz konkret\u00f3w.",
+    "Zaufanie buduj\u0119 przy kawie i w rozmowie, nie na serwerze. Strona powstanie, gdy wszyscy moi klienci b\u0119d\u0105 ju\u017c bezpieczni."
 ];
 
 // Numer telefonu w Base64 (+48 508 473 105)
