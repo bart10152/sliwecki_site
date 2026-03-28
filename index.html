@@ -105,7 +105,7 @@
       object-position: center center;
       /* screen makes pure black fully transparent — warm background shows through */
       mix-blend-mode: screen;
-      opacity: 0.88;
+      opacity: 0.78;
       filter: contrast(0.92) brightness(1.05);
     }
 
@@ -187,7 +187,7 @@
       display: flex;
       align-items: center;
       gap: 13px;
-      font-size: 0.97rem;
+      font-size: 1.1rem;
       color: var(--ink-soft);
     }
 
@@ -219,9 +219,9 @@
       display: inline-block;
       padding: 13px 38px;
       border: 1px solid var(--ink);
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.71rem;
-      font-weight: 500;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--ink);
@@ -297,16 +297,34 @@
           <div class="contact-icon">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14v2.92z"/></svg>
           </div>
-          <a href="tel:+48000000000">+48 000 000 000</a>
+          <a id="phone-link"></a>
         </div>
         <div class="contact-item">
           <div class="contact-icon">
             <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
-          <a href="/cdn-cgi/l/email-protection#2f4d4e5d5b405c556f4a574e425f434a014c4042"><span class="__cf_email__" data-cfemail="22404350564d515862475a434f524e470c414d4f">[email&#160;protected]</span></a>
+          <a id="email-link"></a>
         </div>
       </div>
-      <a class="cta" href="tel:+48000000000">Porozmawiajmy</a>
+      <a class="cta" id="cta-link">Porozmawiajmy</a>
+
+      <script>
+        // Assembled at runtime — invisible to scrapers reading raw HTML
+        var p1 = '+48', p2 = ' 508', p3 = ' 473', p4 = ' 105';
+        var phone = p1 + p2 + p3 + p4;
+        var pl = document.getElementById('phone-link');
+        pl.textContent = phone;
+        pl.href = 'tel:' + phone.replace(/\s/g, '');
+
+        var e1 = 'bartosz.sliwecki', e2 = '@', e3 = 'ovb', e4 = '.com.pl';
+        var email = e1 + e2 + e3 + e4;
+        var el = document.getElementById('email-link');
+        el.textContent = email;
+        el.href = 'mail' + 'to:' + email;
+
+        var cta = document.getElementById('cta-link');
+        cta.href = 'tel:' + phone.replace(/\s/g, '');
+      </script>
     </div>
 
     <div class="photo-col">
