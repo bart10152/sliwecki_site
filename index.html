@@ -20,7 +20,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body { height: 100%; }
 
     body {
@@ -35,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* grain */
     body::after {
       content: '';
       position: fixed;
@@ -45,7 +43,6 @@
       z-index: 200;
     }
 
-    /* ── Top bar ── */
     .topbar {
       background: var(--ink);
       color: var(--mist);
@@ -62,7 +59,7 @@
     .topbar a { color: var(--mist); text-decoration: none; transition: color 0.2s; }
     .topbar a:hover { color: var(--white); }
 
-    /* ── Hero: full viewport minus topbar & footer ── */
+    /* ── Hero ── */
     .hero {
       flex: 1;
       position: relative;
@@ -71,16 +68,14 @@
       min-height: 0;
     }
 
-    /* ── Photo — absolutely fills the right half, anchored to bottom ── */
+    /* ── Photo — right half, full height, bottom-anchored ── */
     .photo-col {
       position: absolute;
       right: 0;
       bottom: 0;
-      /* take up roughly 48% of the viewport width */
+      top: 0;
       width: 48vw;
       max-width: 680px;
-      /* full height of the hero */
-      top: 0;
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -94,41 +89,36 @@
       height: 100%;
       object-fit: contain;
       object-position: bottom center;
-      /* mirror horizontally so Bartosz faces left, opening toward the text */
-      transform: scaleX(-1);
-      /* multiply blends the image into the warm background — whites become transparent */
       mix-blend-mode: multiply;
       filter: drop-shadow(-8px 0 40px rgba(26,25,22,0.06));
     }
 
-    /* multi-directional fade: left edge, top, and bottom */
+    /* fade edges into background */
     .photo-col::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg,  var(--white) 0%,   transparent 22%),
-        linear-gradient(0deg,   var(--white) 0%,   transparent 12%),
-        linear-gradient(180deg, var(--white) 0%,   transparent 10%);
+        linear-gradient(90deg,  var(--white) 0%, transparent 22%),
+        linear-gradient(0deg,   var(--white) 0%, transparent 12%),
+        linear-gradient(180deg, var(--white) 0%, transparent 10%);
       z-index: 1;
       pointer-events: none;
     }
 
-    /* ── Content — left side ── */
+    /* ── Content — centred in the left portion ── */
     .content {
       position: relative;
       z-index: 5;
-      width: 56%;
-      max-width: 560px;
-      padding: 0 0 0 max(48px, 5vw);
+      /* occupies left 52% but centres its children */
+      width: 52%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 0;
+      align-items: center;
+      text-align: center;
+      padding: 72px max(32px, 4vw);
       animation: rise 1s ease-out 0.1s both;
-      /* vertical padding so content doesn't touch topbar/footer */
-      padding-top: 64px;
-      padding-bottom: 64px;
     }
 
     .eyebrow {
@@ -163,10 +153,10 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(1.2rem, 1.9vw, 1.6rem);
-      line-height: 1.65;
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      line-height: 1.7;
       color: var(--ink-soft);
-      max-width: 400px;
+      max-width: 380px;
       margin-bottom: 14px;
     }
 
@@ -180,13 +170,14 @@
       font-size: 0.8rem;
       line-height: 1.9;
       color: var(--mist);
-      max-width: 340px;
+      max-width: 320px;
       margin-bottom: 40px;
     }
 
     .contacts {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 12px;
       margin-bottom: 40px;
     }
@@ -235,11 +226,9 @@
       color: var(--ink);
       text-decoration: none;
       transition: background 0.3s, color 0.3s;
-      align-self: flex-start;
     }
     .cta:hover { background: var(--ink); color: var(--white); }
 
-    /* ── Footer ── */
     footer {
       border-top: 1px solid var(--stone);
       padding: 15px 32px;
@@ -265,46 +254,19 @@
 
     /* ── Mobile ── */
     @media (max-width: 740px) {
-      .hero {
-        flex-direction: column;
-        align-items: center;
-      }
-
+      .hero { flex-direction: column; align-items: center; }
       .photo-col {
         position: relative;
         width: 100%;
         max-width: 100%;
         height: 55vw;
-        top: auto;
-        right: auto;
-        bottom: auto;
+        top: auto; right: auto; bottom: auto;
       }
-
       .photo-col::before {
         background: linear-gradient(180deg, var(--white) 0%, transparent 20%);
       }
-
-      .photo-col img {
-        width: auto;
-        max-width: 80%;
-        height: 100%;
-        margin: 0 auto;
-        display: block;
-      }
-
-      .content {
-        width: 100%;
-        max-width: 100%;
-        padding: 0 28px 56px;
-        align-items: center;
-        text-align: center;
-        padding-top: 0;
-      }
-
-      .divider { margin-left: auto; margin-right: auto; }
-      .motto, .sub { max-width: 100%; }
-      .contacts { align-items: center; }
-      .cta { align-self: center; }
+      .photo-col img { width: auto; max-width: 80%; height: 100%; margin: 0 auto; display: block; }
+      .content { width: 100%; max-width: 100%; padding: 0 28px 56px; padding-top: 0; }
     }
   </style>
 </head>
