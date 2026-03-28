@@ -74,8 +74,8 @@
       right: 0;
       bottom: 0;
       top: 0;
-      width: 48vw;
-      max-width: 680px;
+      width: 42vw;
+      max-width: 560px;
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -89,8 +89,12 @@
       height: 100%;
       object-fit: contain;
       object-position: bottom center;
+      /* multiply makes whites fully transparent — background shows through */
       mix-blend-mode: multiply;
-      filter: drop-shadow(-8px 0 40px rgba(26,25,22,0.06));
+      /* opacity lets the warm page colour bleed through the darker tones too */
+      opacity: 0.72;
+      /* slight desaturation to reinforce the "printed on paper" feel */
+      filter: grayscale(0.15) contrast(1.05);
     }
 
     /* fade edges into background */
@@ -110,14 +114,13 @@
     .content {
       position: relative;
       z-index: 5;
-      /* occupies left 52% but centres its children */
-      width: 52%;
+      width: 58%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 72px max(32px, 4vw);
+      padding: 72px max(16px, 2vw) 72px max(16px, 2vw);
       animation: rise 1s ease-out 0.1s both;
     }
 
