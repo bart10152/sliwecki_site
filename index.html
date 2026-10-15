@@ -198,6 +198,103 @@
   footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
   footer a:hover{border-color:var(--ink)}
 
+  /* ── Energy layer: dark hero, ticker, tinted cards, motion ── */
+  :root{
+    --hero:#0B1236; --hero-ink:#FFFFFF; --hero-muted:#B9BED6;
+    --cta:#F07C3E; --cta-ink:#0B1236;
+    --t1:#FCE7DA; --i1:#F07C3E;
+    --t2:#E2F0E6; --i2:#2E8B57;
+    --t3:#E1E8FA; --i3:#3D5BD9;
+    --t4:#F5ECD7; --i4:#B7862A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --hero:#0A0F2B; --t1:#2A1E19; --t2:#17251C; --t3:#192036; --t4:#272215;
+      --i1:#F59A68; --i2:#5CC08A; --i3:#7D93F0; --i4:#D9AE55;
+    }
+  }
+  :root[data-theme="dark"]{
+    --hero:#0A0F2B; --t1:#2A1E19; --t2:#17251C; --t3:#192036; --t4:#272215;
+    --i1:#F59A68; --i2:#5CC08A; --i3:#7D93F0; --i4:#D9AE55;
+  }
+
+  .topbar{background:var(--hero);border-bottom:1px solid rgba(255,255,255,.08)}
+  header{background:var(--hero)}
+  header .wordmark{color:var(--hero-ink)}
+  header .wordmark span,.hero h1 em{color:var(--cta)}
+  header .btn--primary,.hero .btn--primary{background:var(--cta);color:var(--cta-ink)}
+  header .btn--primary:hover,.hero .btn--primary:hover{background:#FF9459}
+
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(640px circle at 82% 30%, rgba(240,124,62,.30), transparent 62%),
+      radial-gradient(520px circle at 6% 100%, rgba(61,91,217,.28), transparent 60%),
+      var(--hero)}
+  .hero h1{color:var(--hero-ink)}
+  .hero .lead{color:var(--hero-muted)}
+  .hero .eyebrow{color:var(--hero-muted)}
+  .hero .btn--outline{background:transparent;color:var(--hero-ink);border-color:rgba(255,255,255,.45)}
+  .hero .btn--outline:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+  .hero .trust-chip{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:var(--hero-muted)}
+  .hero .trust-chip b{color:var(--hero-ink)}
+  .portrait{background:linear-gradient(165deg,#F9DCC8 0%,#F3A774 55%,#E8743A 100%)}
+  .portrait::before{background:radial-gradient(closest-side,rgba(255,255,255,.45),transparent)}
+  .portrait::after{content:"";position:absolute;width:62%;aspect-ratio:1;border-radius:50%;top:8%;left:19%;
+    border:1px solid rgba(255,255,255,.55);pointer-events:none}
+  .name-card{background:#FFFFFF;color:#15161A}
+  .name-card small{color:#575A66}
+  .name-card a{background:#0B1236;color:#FFFFFF}
+
+  /* ticker */
+  .ticker{background:var(--cta);color:var(--cta-ink);overflow:hidden;border-block:1px solid rgba(0,0,0,.06)}
+  .ticker-track{display:flex;width:max-content;animation:ticker 38s linear infinite}
+  .ticker:hover .ticker-track{animation-play-state:paused}
+  .ticker ul{display:flex;align-items:center;gap:28px;list-style:none;margin:0;padding:16px 14px}
+  .ticker li{display:flex;align-items:center;gap:28px;font:500 italic 24px/1 var(--serif);white-space:nowrap}
+  .ticker li::after{content:"✦";font-style:normal;font-size:14px;opacity:.7}
+  @keyframes ticker{to{transform:translateX(-50%)}}
+
+  /* tinted help cards */
+  .help-card{transition:transform .2s ease, box-shadow .2s ease}
+  .help-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .help-card:nth-child(1){background:var(--t1)} .help-card:nth-child(1) .help-icon{background:var(--i1)}
+  .help-card:nth-child(2){background:var(--t2)} .help-card:nth-child(2) .help-icon{background:var(--i2)}
+  .help-card:nth-child(3){background:var(--t3)} .help-card:nth-child(3) .help-icon{background:var(--i3)}
+  .help-card:nth-child(4){background:var(--t4)} .help-card:nth-child(4) .help-icon{background:var(--i4)}
+  .help-card .help-icon{transition:transform .25s ease}
+  .help-card .help-icon svg{stroke:#FFFFFF}
+  .help-card:hover .help-icon{transform:rotate(-6deg) scale(1.06)}
+
+  /* steps as cards */
+  .steps{gap:16px;border-top:0}
+  .step,.step + .step{background:var(--surface);border:0;border-radius:20px;padding:32px 28px}
+  .step-num{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:var(--t1);font-size:40px}
+
+  /* quick links: colored hover */
+  .quick-card:hover{border-color:var(--cta)}
+  .quick-card:hover .quick-go{color:var(--cta)}
+
+  /* contact glow */
+  .contact-card{background:
+      radial-gradient(520px circle at 100% 0%, rgba(240,124,62,.28), transparent 60%),
+      var(--navy)}
+
+  /* motion */
+  @media (prefers-reduced-motion:no-preference){
+    .hero-copy > *, .portrait{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+    .hero-copy > :nth-child(2){animation-delay:.06s}
+    .hero-copy > :nth-child(3){animation-delay:.12s}
+    .hero-copy > :nth-child(4){animation-delay:.18s}
+    .hero-copy > :nth-child(5){animation-delay:.24s}
+    .portrait{animation-delay:.15s}
+    @supports (animation-timeline: view()){
+      .section-head, .quick-head, .help-card, .step, .quick-card, .contact-card{
+        animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    }
+  }
+  @keyframes rise{from{opacity:.0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes reveal{from{opacity:.25;transform:translateY(32px) scale(.98)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
   @media (max-width:960px){
     .hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:40px 56px}
     .portrait{max-height:520px;max-width:460px}
@@ -208,7 +305,8 @@
     .help-grid,.quick-grid{grid-template-columns:1fr}
     .quick .wrap{padding-block:64px 0}
     .steps{grid-template-columns:1fr;border-top:0}
-    .step,.step + .step{padding:24px 0;border-left:0;border-top:1px solid var(--line)}
+    .step,.step + .step{padding:24px}
+    .ticker li{font-size:20px}
     .section .wrap,.contact .wrap{padding-block:64px}
     .topbar{font-size:10px;letter-spacing:.08em}
     header .btn{display:none}
@@ -229,7 +327,6 @@
   <div class="wrap">
     <a class="wordmark" href="#">Bartosz Śliwecki<span>.</span></a>
     <div class="header-actions">
-      <a class="nav-link" href="#kup-online">Kup online</a>
       <a class="btn btn--primary" data-tel href="#kontakt">Porozmawiajmy</a>
     </div>
   </div>
@@ -264,6 +361,17 @@
       </figure>
     </div>
   </section>
+
+  <div class="ticker" aria-label="Zakres ochrony">
+    <div class="ticker-track">
+      <ul>
+        <li>Ochrona życia</li><li>Zdrowie i poważne zachorowania</li><li>Ochrona dochodu</li><li>Zabezpieczenie kredytu</li><li>Szkolne NNW</li><li>IKE / IKZE</li><li>OC pilota drona</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Ochrona życia</li><li>Zdrowie i poważne zachorowania</li><li>Ochrona dochodu</li><li>Zabezpieczenie kredytu</li><li>Szkolne NNW</li><li>IKE / IKZE</li><li>OC pilota drona</li>
+      </ul>
+    </div>
+  </div>
 
   <section class="section">
     <div class="wrap">
