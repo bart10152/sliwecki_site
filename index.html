@@ -162,7 +162,7 @@
   .contact-box .btn{margin:8px;background:var(--on-navy);color:#0B1236}
 
   /* quick links (online sales) */
-  .quick .wrap{padding-block:80px;border-bottom:1px solid var(--line)}
+  .quick .wrap{padding-block:96px 0}
   .quick-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:36px}
   .quick-head > div{display:flex;flex-direction:column;gap:14px;min-width:0}
   .quick-head p{color:var(--muted);max-width:30em;font-size:15px}
@@ -206,7 +206,7 @@
   }
   @media (max-width:640px){
     .help-grid,.quick-grid{grid-template-columns:1fr}
-    .quick .wrap{padding-block:56px}
+    .quick .wrap{padding-block:64px 0}
     .steps{grid-template-columns:1fr;border-top:0}
     .step,.step + .step{padding:24px 0;border-left:0;border-top:1px solid var(--line)}
     .section .wrap,.contact .wrap{padding-block:64px}
@@ -265,6 +265,55 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">W czym pomagam</span>
+        <h2>Ochrona dopasowana do Twojego życia</h2>
+        <p>Każda rodzina ma inne zobowiązania i inne obawy. Zaczynamy od nich, a dopiero potem dobieramy rozwiązania.</p>
+      </div>
+      <div class="help-grid">
+        <article class="help-card">
+          <div class="help-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M12 17.5s-3-1.8-3-3.8a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 3.8-3 3.8z"/></svg></div>
+          <h3>Życie i rodzina</h3>
+          <p>Zabezpieczenie bliskich na wypadek Twojej śmierci, tak by mieli z czego żyć i spłacić zobowiązania.</p>
+        </article>
+        <article class="help-card">
+          <div class="help-icon"><svg viewBox="0 0 24 24"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1z"/><polyline points="7 12 10 12 11.5 9.5 13 14 14.5 12 17 12"/></svg></div>
+          <h3>Zdrowie</h3>
+          <p>Wsparcie finansowe przy poważnym zachorowaniu, pobycie w szpitalu lub operacji.</p>
+        </article>
+        <article class="help-card">
+          <div class="help-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/></svg></div>
+          <h3>Dochód</h3>
+          <p>Ochrona na czas, gdy z powodu choroby lub wypadku nie możesz pracować i zarabiać.</p>
+        </article>
+        <article class="help-card">
+          <div class="help-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg></div>
+          <h3>Kredyt i zobowiązania</h3>
+          <p>Polisa, dzięki której rodzina nie zostaje sama ze spłatą kredytu w trudnej sytuacji.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section steps-band">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Współpraca</span>
+        <h2>Jak wygląda współpraca</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><h3>Rozmowa</h3>
+          <p>Poznaję Twoją sytuację: rodzinę, zobowiązania i to, co chcesz chronić. Bez żadnych zobowiązań.</p></div>
+        <div class="step"><span class="step-num">2</span><h3>Analiza</h3>
+          <p>Przygotowuję propozycje i porównuję je tak, żeby różnice w zakresie i cenie były jasne.</p></div>
+        <div class="step"><span class="step-num">3</span><h3>Decyzja</h3>
+          <p>Wybierasz w swoim tempie. Po podpisaniu polisy nadal jestem do dyspozycji, gdy pojawią się pytania.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="quick" id="kup-online">
     <div class="wrap">
       <div class="quick-head">
@@ -315,55 +364,6 @@
           </div>
           <span class="quick-go">Przejdź do Compensa <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">W czym pomagam</span>
-        <h2>Ochrona dopasowana do Twojego życia</h2>
-        <p>Każda rodzina ma inne zobowiązania i inne obawy. Zaczynamy od nich, a dopiero potem dobieramy rozwiązania.</p>
-      </div>
-      <div class="help-grid">
-        <article class="help-card">
-          <div class="help-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M12 17.5s-3-1.8-3-3.8a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 3.8-3 3.8z"/></svg></div>
-          <h3>Życie i rodzina</h3>
-          <p>Zabezpieczenie bliskich na wypadek Twojej śmierci, tak by mieli z czego żyć i spłacić zobowiązania.</p>
-        </article>
-        <article class="help-card">
-          <div class="help-icon"><svg viewBox="0 0 24 24"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1z"/><polyline points="7 12 10 12 11.5 9.5 13 14 14.5 12 17 12"/></svg></div>
-          <h3>Zdrowie</h3>
-          <p>Wsparcie finansowe przy poważnym zachorowaniu, pobycie w szpitalu lub operacji.</p>
-        </article>
-        <article class="help-card">
-          <div class="help-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/></svg></div>
-          <h3>Dochód</h3>
-          <p>Ochrona na czas, gdy z powodu choroby lub wypadku nie możesz pracować i zarabiać.</p>
-        </article>
-        <article class="help-card">
-          <div class="help-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><polyline points="8.5 12 11 14.5 15.5 10"/></svg></div>
-          <h3>Kredyt i zobowiązania</h3>
-          <p>Polisa, dzięki której rodzina nie zostaje sama ze spłatą kredytu w trudnej sytuacji.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section steps-band">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Współpraca</span>
-        <h2>Jak wygląda współpraca</h2>
-      </div>
-      <div class="steps">
-        <div class="step"><span class="step-num">1</span><h3>Rozmowa</h3>
-          <p>Poznaję Twoją sytuację: rodzinę, zobowiązania i to, co chcesz chronić. Bez żadnych zobowiązań.</p></div>
-        <div class="step"><span class="step-num">2</span><h3>Analiza</h3>
-          <p>Przygotowuję propozycje i porównuję je tak, żeby różnice w zakresie i cenie były jasne.</p></div>
-        <div class="step"><span class="step-num">3</span><h3>Decyzja</h3>
-          <p>Wybierasz w swoim tempie. Po podpisaniu polisy nadal jestem do dyspozycji, gdy pojawią się pytania.</p></div>
       </div>
     </div>
   </section>
