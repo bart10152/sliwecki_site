@@ -161,6 +161,37 @@
   .copy:hover{background:rgba(255,255,255,.08)}
   .contact-box .btn{margin:8px;background:var(--on-navy);color:#0B1236}
 
+  /* quick links (online sales) */
+  .quick .wrap{padding-block:80px;border-bottom:1px solid var(--line)}
+  .quick-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:36px}
+  .quick-head > div{display:flex;flex-direction:column;gap:14px;min-width:0}
+  .quick-head p{color:var(--muted);max-width:30em;font-size:15px}
+  .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .quick-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;
+    display:flex;flex-direction:column;gap:12px;min-width:0;transition:border-color .2s, box-shadow .2s, transform .15s}
+  .quick-card:hover{border-color:var(--ink);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .quick-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .quick-icon{width:44px;height:44px;border-radius:12px;background:var(--warm);display:grid;place-items:center;flex:none}
+  .quick-icon svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .insurer{font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:6px 10px;white-space:nowrap}
+  .quick-card h3{font-size:24px}
+  .quick-card h3 a{text-decoration:none}
+  .quick-card h3 a::after{content:"";position:absolute;inset:0;border-radius:18px}
+  .quick-card p{color:var(--muted);font-size:14.5px;flex:1}
+  .quick-go{display:flex;align-items:center;gap:8px;font:500 14px/1 var(--sans);color:var(--ink)}
+  .quick-go svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
+  .quick-card:hover .quick-go svg{transform:translateX(3px)}
+  .code-row{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    background:var(--warm);border:1px dashed var(--line);border-radius:12px;padding:8px 8px 8px 12px}
+  .code-row small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .code-value{font:600 18px/1.3 var(--sans);letter-spacing:.08em;font-variant-numeric:tabular-nums;user-select:all}
+  .copy--light{border-color:var(--line);color:var(--ink);background:var(--surface)}
+  .copy--light:hover{background:var(--warm)}
+  .nav-link{font:500 15px/1 var(--sans);text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:3px}
+  .nav-link:hover{border-color:var(--ink)}
+  .header-actions{display:flex;align-items:center;gap:24px}
+
   footer{border-top:1px solid var(--line)}
   footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:28px;font-size:13px;color:var(--muted)}
   footer .legal{display:flex;flex-wrap:wrap;gap:6px 18px}
@@ -170,16 +201,18 @@
   @media (max-width:960px){
     .hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:40px 56px}
     .portrait{max-height:520px;max-width:460px}
-    .help-grid{grid-template-columns:repeat(2,1fr)}
+    .help-grid,.quick-grid{grid-template-columns:repeat(2,1fr)}
     .contact-card{grid-template-columns:1fr;padding:48px 24px}
   }
   @media (max-width:640px){
-    .help-grid{grid-template-columns:1fr}
+    .help-grid,.quick-grid{grid-template-columns:1fr}
+    .quick .wrap{padding-block:56px}
     .steps{grid-template-columns:1fr;border-top:0}
     .step,.step + .step{padding:24px 0;border-left:0;border-top:1px solid var(--line)}
     .section .wrap,.contact .wrap{padding-block:64px}
     .topbar{font-size:10px;letter-spacing:.08em}
     header .btn{display:none}
+    .header-actions{gap:0}
     .contact-card{border-radius:24px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
@@ -195,7 +228,10 @@
 <header>
   <div class="wrap">
     <a class="wordmark" href="#">Bartosz Śliwecki<span>.</span></a>
-    <a class="btn btn--primary" data-tel href="#kontakt">Porozmawiajmy</a>
+    <div class="header-actions">
+      <a class="nav-link" href="#kup-online">Kup online</a>
+      <a class="btn btn--primary" data-tel href="#kontakt">Porozmawiajmy</a>
+    </div>
   </div>
 </header>
 
@@ -226,6 +262,60 @@
           <a href="#kontakt" aria-label="Przejdź do kontaktu"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
         </figcaption>
       </figure>
+    </div>
+  </section>
+
+  <section class="quick" id="kup-online">
+    <div class="wrap">
+      <div class="quick-head">
+        <div>
+          <span class="eyebrow">Kup online</span>
+          <h2>Szybkie linki</h2>
+        </div>
+        <p>Te ubezpieczenia możesz kupić samodzielnie przez internet. Linki prowadzą prosto do stron towarzystw.</p>
+      </div>
+      <div class="quick-grid">
+        <article class="quick-card">
+          <div class="quick-top">
+            <span class="quick-icon"><svg viewBox="0 0 24 24"><path d="M5 7.5h14v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M8.5 7.5V6a3.5 3.5 0 0 1 7 0v1.5"/><path d="M9 12.5h6"/></svg></span>
+            <span class="insurer">UNIQA</span>
+          </div>
+          <h3><a href="https://www.uniqa.pl/kalkulator/ubezpieczenie-szkolne-nnw/insurance?PartnerType=PA&amp;PartnerId1=872184&amp;PartnerId2=LP" target="_blank" rel="noopener">Ubezpieczenie szkolne NNW</a></h3>
+          <p>Ochrona dziecka od następstw nieszczęśliwych wypadków. Składkę obliczysz w kalkulatorze online.</p>
+          <span class="quick-go">Przejdź do kalkulatora <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+        </article>
+        <article class="quick-card">
+          <div class="quick-top">
+            <span class="quick-icon"><svg viewBox="0 0 24 24"><path d="M5 7.5h14v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M8.5 7.5V6a3.5 3.5 0 0 1 7 0v1.5"/><path d="M9 12.5h6"/></svg></span>
+            <span class="insurer">Signal Iduna</span>
+          </div>
+          <h3><a href="https://sklep.signal-iduna.pl/?&amp;ag_symbol=17001&amp;RauNbr=11769310/P&amp;product_code=PNL_NNWI_SZKOLNE" target="_blank" rel="noopener">Ubezpieczenie szkolne NNW</a></h3>
+          <p>Druga oferta szkolnego NNW do porównania. Zakup przez sklep internetowy towarzystwa.</p>
+          <span class="quick-go">Przejdź do sklepu <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+        </article>
+        <article class="quick-card">
+          <div class="quick-top">
+            <span class="quick-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5h16"/><path d="M6.5 16v-4"/><path d="M11 16V9"/><path d="M15.5 16v-6"/><path d="M20 4.5l-6 4-4-2.5-6 4"/></svg></span>
+            <span class="insurer">Esaliens</span>
+          </div>
+          <h3><a href="https://esaliens24.pl/mu/#/link/E750WZXUBK/403009" target="_blank" rel="noopener">IKE / IKZE</a></h3>
+          <p>Długoterminowe oszczędzanie na emeryturę z korzyściami podatkowymi. Konto założysz online.</p>
+          <span class="quick-go">Załóż konto <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+        </article>
+        <article class="quick-card">
+          <div class="quick-top">
+            <span class="quick-icon"><svg viewBox="0 0 24 24"><rect x="9" y="10" width="6" height="4" rx="1"/><circle cx="5.5" cy="6.5" r="2.5"/><circle cx="18.5" cy="6.5" r="2.5"/><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/><path d="M7.5 8.5 9 10m6 0 1.5-1.5M7.5 15.5 9 14m6 0 1.5 1.5"/></svg></span>
+            <span class="insurer">Compensa</span>
+          </div>
+          <h3><a href="https://www.compensa.pl/ubezpieczenie/oc-pilota-drona/" target="_blank" rel="noopener">OC pilota drona</a></h3>
+          <p>Ubezpieczenie OC dla operatorów dronów. Przy zakupie wpisz kod zniżkowy:</p>
+          <div class="code-row">
+            <span><small>Kod zniżki</small><span class="code-value" id="drone-code">128169</span></span>
+            <button class="copy copy--light" type="button" id="copy-drone" data-copy="drone">Kopiuj</button>
+          </div>
+          <span class="quick-go">Przejdź do Compensa <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -332,13 +422,13 @@
     document.getElementById('email-link').textContent = email;
     var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
 
-    var values = { phone: phone, email: email };
+    var values = { phone: phone, email: email, drone: '128169' };
     document.querySelectorAll('[data-copy]').forEach(function(btn){
       btn.addEventListener('click', function(){
         var text = values[btn.getAttribute('data-copy')];
         var done = function(){ btn.textContent = 'Skopiowano'; setTimeout(function(){ btn.textContent = 'Kopiuj'; }, 1600); };
         var fallback = function(){
-          var target = btn.parentNode.querySelector('.val a');
+          var target = btn.parentNode.querySelector('.val a, .code-value');
           var r = document.createRange(); r.selectNodeContents(target);
           var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
           btn.textContent = 'Zaznaczono';
