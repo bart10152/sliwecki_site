@@ -236,10 +236,32 @@
   .hero .btn--outline:hover{border-color:#fff;background:rgba(255,255,255,.06)}
   .hero .trust-chip{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:var(--hero-muted)}
   .hero .trust-chip b{color:var(--hero-ink)}
-  .portrait{background:linear-gradient(165deg,#F9DCC8 0%,#F3A774 55%,#E8743A 100%)}
-  .portrait::before{background:radial-gradient(closest-side,rgba(255,255,255,.45),transparent)}
-  .portrait::after{content:"";position:absolute;width:62%;aspect-ratio:1;border-radius:50%;top:8%;left:19%;
-    border:1px solid rgba(255,255,255,.55);pointer-events:none}
+  .portrait{background:#2a2b33;box-shadow:0 30px 80px -20px rgba(240,124,62,.45), 0 0 0 1px rgba(255,255,255,.08)}
+  .portrait::before{display:none}
+  .portrait img{left:0;top:0;transform:none;width:100%;height:100%;max-width:100%;object-fit:cover;object-position:52% 18%;filter:none}
+
+  /* photos in sections */
+  .story .wrap{padding-block:0 0}
+  .story-card{display:grid;grid-template-columns:1.1fr .9fr;border-radius:32px;overflow:hidden;background:var(--t1);min-height:460px}
+  .story-text{display:flex;flex-direction:column;justify-content:center;gap:24px;padding:56px clamp(24px,5vw,72px);min-width:0}
+  .story blockquote{margin:0;font:500 italic clamp(34px,4.2vw,54px)/1.12 var(--serif);color:var(--ink);text-wrap:balance}
+  .story blockquote::before{content:"„";display:block;font:600 96px/.6 var(--serif);color:var(--cta);margin-bottom:12px;font-style:normal}
+  .story-sign{font:500 15px/1 var(--sans);color:var(--muted);display:flex;align-items:center;gap:12px}
+  .story-sign::before{content:"";width:28px;height:1px;background:currentColor}
+  .story-photo{margin:0;position:relative;min-height:320px}
+  .story-photo img,.steps-photo img,.quick-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .story-photo img{object-position:60% 22%}
+
+  .steps-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;align-items:stretch}
+  .steps-photo,.quick-photo{margin:0;position:relative;border-radius:24px;overflow:hidden;min-height:340px}
+  .steps-photo img{object-position:65% 35%}
+  .steps-layout .steps{grid-template-columns:1fr;align-content:center}
+  .steps-layout .step{display:grid;grid-template-columns:64px 1fr;column-gap:22px;align-items:start}
+  .steps-layout .step > div{display:flex;flex-direction:column;gap:8px;min-width:0}
+
+  .quick-layout{display:grid;grid-template-columns:1fr 300px;gap:16px}
+  .quick-layout .quick-grid{grid-template-columns:repeat(2,1fr)}
+  .quick-photo img{object-position:60% 40%}
   .name-card{background:#FFFFFF;color:#15161A}
   .name-card small{color:#575A66}
   .name-card a{background:#0B1236;color:#FFFFFF}
@@ -294,6 +316,27 @@
   @keyframes rise{from{opacity:.0;transform:translateY(18px)}to{opacity:1;transform:none}}
   @keyframes reveal{from{opacity:.25;transform:translateY(32px) scale(.98)}to{opacity:1;transform:none}}
   @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+  @media (prefers-reduced-motion:no-preference){
+    @supports (animation-timeline: view()){
+      .story-card, .steps-photo, .quick-photo{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+    }
+  }
+  @media (max-width:960px){
+    .story-card{grid-template-columns:1fr;min-height:0}
+    .story-photo{min-height:380px;order:-1}
+    .steps-layout,.quick-layout{grid-template-columns:1fr}
+    .steps-photo{min-height:380px}
+    .quick-photo{min-height:260px;order:-1}
+  }
+  @media (max-width:640px){
+    .quick-layout .quick-grid{grid-template-columns:1fr}
+    .story-card{border-radius:24px}
+    .story-text{padding:36px 24px}
+    .story-photo{min-height:300px}
+    .steps-photo{min-height:300px}
+    .steps-layout .step{grid-template-columns:52px 1fr;column-gap:16px}
+    .steps-layout .step-num{width:52px;height:52px;font-size:32px}
+  }
 
   @media (max-width:960px){
     .hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:40px 56px}
@@ -353,7 +396,7 @@
       </div>
 
       <figure class="portrait" style="margin:0">
-        <img src="bartosz_sliwecki.webp" alt="Bartosz Śliwecki" width="900" height="1214">
+        <img src="bartosz-portret.webp" alt="Bartosz Śliwecki, doradca ubezpieczeniowy" width="1100" height="1100">
         <figcaption class="name-card">
           <span><strong>Bartosz Śliwecki</strong><small>Doradca ubezpieczeniowy</small></span>
           <a href="#kontakt" aria-label="Przejdź do kontaktu"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
@@ -405,19 +448,35 @@
     </div>
   </section>
 
+  <section class="story">
+    <div class="wrap">
+      <div class="story-card">
+        <div class="story-text">
+          <span class="eyebrow">Moje podejście</span>
+          <blockquote>Bez presji, z troską i z myślą o tym, co naprawdę się liczy.</blockquote>
+          <p class="story-sign">Bartosz Śliwecki</p>
+        </div>
+        <figure class="story-photo"><img src="bartosz-biurko.webp" alt="Bartosz Śliwecki przy biurku z kalendarzem" width="1400" height="2097" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
   <section class="section steps-band">
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Współpraca</span>
         <h2>Jak wygląda współpraca</h2>
       </div>
-      <div class="steps">
-        <div class="step"><span class="step-num">1</span><h3>Rozmowa</h3>
-          <p>Poznaję Twoją sytuację: rodzinę, zobowiązania i to, co chcesz chronić. Bez żadnych zobowiązań.</p></div>
-        <div class="step"><span class="step-num">2</span><h3>Analiza</h3>
-          <p>Przygotowuję propozycje i porównuję je tak, żeby różnice w zakresie i cenie były jasne.</p></div>
-        <div class="step"><span class="step-num">3</span><h3>Decyzja</h3>
-          <p>Wybierasz w swoim tempie. Po podpisaniu polisy nadal jestem do dyspozycji, gdy pojawią się pytania.</p></div>
+      <div class="steps-layout">
+        <figure class="steps-photo"><img src="bartosz-analiza.webp" alt="Bartosz Śliwecki przegląda broszurę Analiza Potrzeb Klienta" width="900" height="1360" loading="lazy"></figure>
+        <div class="steps">
+          <div class="step"><span class="step-num">1</span><div><h3>Rozmowa</h3>
+            <p>Poznaję Twoją sytuację: rodzinę, zobowiązania i to, co chcesz chronić. Bez żadnych zobowiązań.</p></div></div>
+          <div class="step"><span class="step-num">2</span><div><h3>Analiza</h3>
+            <p>Przygotowuję propozycje i porównuję je tak, żeby różnice w zakresie i cenie były jasne.</p></div></div>
+          <div class="step"><span class="step-num">3</span><div><h3>Decyzja</h3>
+            <p>Wybierasz w swoim tempie. Po podpisaniu polisy nadal jestem do dyspozycji, gdy pojawią się pytania.</p></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -431,6 +490,7 @@
         </div>
         <p>Te ubezpieczenia możesz kupić samodzielnie przez internet. Linki prowadzą prosto do stron towarzystw.</p>
       </div>
+      <div class="quick-layout">
       <div class="quick-grid">
         <article class="quick-card">
           <div class="quick-top">
@@ -472,6 +532,8 @@
           </div>
           <span class="quick-go">Przejdź do Compensa <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
         </article>
+      </div>
+      <figure class="quick-photo"><img src="bartosz-laptop.webp" alt="Praca przy laptopie z broszurami OVB na stole" width="1000" height="1522" loading="lazy"></figure>
       </div>
     </div>
   </section>
