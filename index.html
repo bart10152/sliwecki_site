@@ -5,110 +5,184 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Bartosz Śliwecki – Doradca Ubezpieczeniowy</title>
 <link rel="icon" href="favicon.ico">
-<meta name="description" content="Bartosz Śliwecki – doradca ubezpieczeniowy. Pomagam zaplanować ochronę finansową dla siebie i rodziny: życie, zdrowie, dochód. Bez presji, z troską.">
+<meta name="description" content="Bartosz Śliwecki – doradca ubezpieczeniowy z Białegostoku. Pracuję z ludźmi, którzy chcą świadomie zadbać o siebie i bliskich. Bez presji, na lata.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* Quiet, letter-like one-pager. Lots of air, one navy band, gold used sparingly. */
+  /* Layout: a personal dossier. Navy opening with a large portrait, then warm paper pages:
+     who I am, what I stand for, facts, how we work, a closing door. Gold only for marks. */
   :root{
-    --paper:#FBF9F5;
+    --paper:#F7F4EE;
+    --paper-2:#EFEAE1;
     --surface:#FFFFFF;
-    --ink:#17181C;
-    --muted:#5C5F69;
-    --line:#E7E2DA;
+    --ink:#16171B;
+    --muted:#585B65;
+    --line:#DED7CB;
     --navy:#14213D;
+    --navy-2:#1A2A4C;
     --on-navy:#F5F3EF;
-    --on-navy-muted:#AEB5C7;
+    --on-navy-muted:#AAB2C6;
     --gold:#B8975A;
+    --gold-soft:#D4BC8C;
     --petrol:#1F5F66;
+    --ph-bg:rgba(184,151,90,.16);
 
     --serif:'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
     --sans:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --paper:#0F1116; --surface:#161921; --ink:#EFECE6; --muted:#A3A6B0; --line:#272A33;
-      --navy:#111B32; --on-navy:#F5F3EF; --on-navy-muted:#A3ABC0; --gold:#CDAE72;
+      --paper:#101217; --paper-2:#161921; --surface:#1B1E27; --ink:#EEEBE5; --muted:#A4A7B1; --line:#2A2D37;
+      --navy:#0F1830; --navy-2:#15213D; --gold:#CDAE72; --ph-bg:rgba(205,174,114,.18);
       color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --paper:#0F1116; --surface:#161921; --ink:#EFECE6; --muted:#A3A6B0; --line:#272A33;
-    --navy:#111B32; --on-navy:#F5F3EF; --on-navy-muted:#A3ABC0; --gold:#CDAE72;
+    --paper:#101217; --paper-2:#161921; --surface:#1B1E27; --ink:#EEEBE5; --muted:#A4A7B1; --line:#2A2D37;
+    --navy:#0F1830; --navy-2:#15213D; --gold:#CDAE72; --ph-bg:rgba(205,174,114,.18);
     color-scheme:dark;
   }
 
   *,*::before,*::after{box-sizing:border-box}
   html{scroll-behavior:smooth}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.75 var(--sans);
+  body{margin:0;background:var(--paper) var(--grain);color:var(--ink);font:400 17px/1.75 var(--sans);
     -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   img{max-width:100%;display:block}
   a{color:inherit}
   p{margin:0}
   :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 
-  .wrap{max-width:1040px;margin:0 auto;
+  .wrap{max-width:1160px;margin:0 auto;
     padding-left:max(24px, env(safe-area-inset-left,0px));
     padding-right:max(24px, env(safe-area-inset-right,0px))}
-  .narrow{max-width:640px}
 
-  h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;text-wrap:balance;letter-spacing:-.005em}
-  h1{font-size:clamp(38px,5vw,60px);line-height:1.08}
-  h1 em{font-style:italic;color:var(--gold)}
-  h2{font-size:clamp(30px,3.4vw,40px);line-height:1.15}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;text-wrap:balance;letter-spacing:-.01em}
+  h1{font-size:clamp(44px,6vw,80px);line-height:1.02}
+  h1 em,h2 em{font-style:italic;color:var(--gold)}
+  h2{font-size:clamp(34px,4vw,52px);line-height:1.08}
+  h3{font-size:26px;line-height:1.2}
 
-  .eyebrow{display:block;font:500 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-  .rule{width:40px;height:1px;background:var(--gold);border:0;margin:0}
+  .eyebrow{display:flex;align-items:center;gap:14px;font:500 12px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
 
-  /* hero */
-  .hero{background:
-      radial-gradient(900px circle at 90% 10%, rgba(31,95,102,.28), transparent 65%),
-      var(--navy);color:var(--on-navy)}
-  .hero header{display:flex;align-items:center;justify-content:space-between;padding-block:28px}
+  /* placeholder for facts only Bart can supply */
+  .ph{background:var(--ph-bg);border:1px dashed var(--gold);border-radius:4px;padding:0 6px;font-style:normal;color:inherit;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+  /* ── hero ── */
+  .hero{position:relative;overflow:hidden;color:var(--on-navy);background:
+      radial-gradient(1000px circle at 85% 0%, rgba(31,95,102,.42), transparent 60%),
+      radial-gradient(600px circle at 0% 100%, rgba(184,151,90,.10), transparent 60%),
+      var(--navy)}
+  .hero::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:.9;pointer-events:none}
+  .hero header{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:28px}
   .wordmark{font:600 22px/1 var(--serif);text-decoration:none;letter-spacing:.01em;white-space:nowrap}
   .wordmark span{color:var(--gold)}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:end;padding-block:64px 0}
-  .hero-copy{display:flex;flex-direction:column;gap:28px;padding-bottom:96px;min-width:0}
+  .hero nav{display:flex;gap:28px;font-size:14px}
+  .hero nav a{text-decoration:none;color:var(--on-navy-muted);transition:color .3s}
+  .hero nav a:hover{color:var(--on-navy)}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:end;padding-top:56px}
+  .hero-copy{display:flex;flex-direction:column;gap:30px;padding-bottom:104px;min-width:0}
   .hero .eyebrow{color:var(--on-navy-muted)}
   .hero h1{color:var(--on-navy)}
-  .hero-note{color:var(--on-navy-muted);font-size:16px;max-width:30em}
-  .portrait{margin:0;position:relative;aspect-ratio:4/5;max-height:560px;width:100%;overflow:hidden;
-    border-radius:200px 200px 0 0;background:#262833}
-  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 18%}
+  .hero-lead{font-size:19px;line-height:1.7;color:var(--on-navy-muted);max-width:31em}
+  .creds{display:flex;flex-wrap:wrap;gap:10px 28px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);
+    font:500 13px/1.4 var(--sans);letter-spacing:.04em;color:var(--on-navy-muted)}
+  .creds b{color:var(--on-navy);font-weight:500}
+  .creds a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+  .portrait{margin:0;position:relative;aspect-ratio:4/5;width:100%;max-height:640px;overflow:hidden;background:#262833}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 16%}
+  .portrait figcaption{position:absolute;left:0;bottom:0;right:0;padding:56px 24px 20px;
+    background:linear-gradient(transparent, rgba(10,16,32,.72));color:var(--on-navy);
+    font:500 italic 22px/1.2 var(--serif)}
+  .portrait figcaption small{display:block;font:500 11px/1 var(--sans);font-style:normal;letter-spacing:.18em;text-transform:uppercase;color:var(--on-navy-muted);margin-top:8px}
 
-  /* sections */
   section{padding-block:128px}
-  .letter{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:start}
-  .letter-photo{margin:0;position:sticky;top:48px;aspect-ratio:3/4;overflow:hidden;border-radius:4px}
-  .letter-photo img{width:100%;height:100%;object-fit:cover;object-position:60% 22%}
-  .letter-text{display:flex;flex-direction:column;gap:24px;min-width:0}
-  .letter-text h2{margin-bottom:8px}
-  .letter-text p{color:var(--muted)}
-  .letter-text p strong{color:var(--ink);font-weight:500}
-  .sign{font:500 italic 30px/1 var(--serif);color:var(--ink);margin-top:16px}
 
-  /* contact */
-  .contact{border-top:1px solid var(--line)}
-  .contact .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px}
-  .contact p.intro{color:var(--muted);max-width:30em}
-  .contact-lines{display:flex;flex-direction:column;gap:14px;margin-top:12px;align-items:center}
-  .contact-line{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;justify-content:center}
-  .contact-line small{font:500 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);min-width:64px;text-align:right}
-  .contact-line a{font:500 clamp(22px,2.6vw,28px)/1.3 var(--serif);text-decoration:none;
-    border-bottom:1px solid var(--line);overflow-wrap:anywhere;transition:border-color .3s}
-  .contact-line a:hover{border-color:var(--gold)}
+  /* ── who I am ── */
+  .about{display:grid;grid-template-columns:5fr 7fr;gap:88px;align-items:start}
+  .about-photo{margin:0;position:sticky;top:40px}
+  .about-photo .frame{aspect-ratio:3/4;overflow:hidden}
+  .about-photo img{width:100%;height:100%;object-fit:cover;object-position:60% 22%}
+  .about-photo figcaption{font-size:13px;color:var(--muted);margin-top:14px}
+  .about-text{display:flex;flex-direction:column;gap:26px;min-width:0}
+  .about-text .first{font:500 clamp(24px,2.4vw,30px)/1.4 var(--serif);color:var(--ink)}
+  .about-text p{color:var(--muted)}
+  .about-text p b{color:var(--ink);font-weight:500}
+  .sign{display:flex;align-items:center;gap:16px;margin-top:8px;font:500 italic 30px/1 var(--serif)}
+  .sign::before{content:"";width:40px;height:1px;background:var(--gold)}
+
+  /* ── principles ── */
+  .principles{background:var(--paper-2) var(--grain)}
+  .pr-head{display:grid;grid-template-columns:5fr 7fr;gap:88px;align-items:end;margin-bottom:64px}
+  .pr-head p{color:var(--muted);max-width:32em}
+  .pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 88px}
+  .pr-col h3{font-size:22px;padding-bottom:18px;border-bottom:1px solid var(--ink);margin-bottom:4px}
+  .pr-col ul{list-style:none;margin:0;padding:0}
+  .pr-col li{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .pr-col li::before{font:500 22px/1.2 var(--serif);color:var(--gold)}
+  .pr-col.yes li::before{content:"+"}
+  .pr-col.no li::before{content:"–"}
+  .pr-col li b{display:block;font-weight:500;color:var(--ink)}
+  .pr-col li span{color:var(--muted);font-size:15.5px}
+
+  /* ── facts ── */
+  .facts{padding-block:0}
+  .facts .wrap{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line)}
+  .fact{padding:40px 28px 40px 0;display:flex;flex-direction:column;gap:10px;min-width:0}
+  .fact + .fact{padding-left:28px;border-left:1px solid var(--line)}
+  .fact strong{font:500 clamp(28px,2.8vw,36px)/1.1 var(--serif);color:var(--ink)}
+  .fact span{font-size:14px;color:var(--muted)}
+  .fact a{color:var(--ink)}
+
+  /* ── how we work ── */
+  .how{display:grid;grid-template-columns:7fr 5fr;gap:88px;align-items:center}
+  .how-text{display:flex;flex-direction:column;gap:28px;min-width:0}
+  .how-text > p{color:var(--muted);max-width:34em}
+  .steps{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column}
+  .steps li{display:grid;grid-template-columns:56px 1fr;gap:20px;padding:26px 0;border-top:1px solid var(--line)}
+  .steps li:last-child{border-bottom:1px solid var(--line)}
+  .steps .n{font:500 italic 34px/1 var(--serif);color:var(--gold)}
+  .steps h3{font-size:24px;margin-bottom:6px}
+  .steps p{color:var(--muted);font-size:15.5px}
+  .how-photo{margin:0;aspect-ratio:2/3;overflow:hidden;max-height:720px}
+  .how-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 35%}
+
+  /* ── statement band ── */
+  .statement{position:relative;padding:0;color:var(--on-navy);background:var(--navy);overflow:hidden}
+  .statement .inner{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+  .statement figure{margin:0;position:relative;min-height:340px}
+  .statement figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+  .statement .words{display:flex;flex-direction:column;justify-content:center;gap:28px;
+    padding:80px max(24px, env(safe-area-inset-right,0px)) 80px clamp(24px,7vw,104px);min-width:0;
+    background:radial-gradient(700px circle at 100% 100%, rgba(31,95,102,.38), transparent 60%), var(--navy)}
+  .statement blockquote{margin:0;font:500 clamp(34px,3.8vw,54px)/1.12 var(--serif);text-wrap:balance}
+  .statement blockquote em{font-style:italic;color:var(--gold-soft)}
+  .statement p{color:var(--on-navy-muted);max-width:28em}
+
+  /* ── contact ── */
+  .contact{display:grid;grid-template-columns:7fr 5fr;gap:88px;align-items:start}
+  .contact-text{display:flex;flex-direction:column;gap:26px;min-width:0}
+  .contact-text p{color:var(--muted);max-width:32em}
+  .door{background:var(--surface);border:1px solid var(--line);padding:40px 36px;display:flex;flex-direction:column;gap:26px;min-width:0}
+  .door-row{display:flex;flex-direction:column;gap:6px}
+  .door-row small{font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .door-row a{font:500 clamp(22px,2.2vw,27px)/1.3 var(--serif);text-decoration:none;overflow-wrap:anywhere;
+    border-bottom:1px solid var(--line);align-self:flex-start;transition:border-color .3s}
+  .door-row a:hover{border-color:var(--gold)}
+  .door-row .line{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
   .copy{background:none;border:0;padding:0;font:500 12px/1 var(--sans);letter-spacing:.06em;color:var(--muted);
     cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
   .copy:hover{color:var(--ink)}
-  .reg{font-size:13px;color:var(--muted);margin-top:16px}
-  .reg a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .door .note{font-size:14px;color:var(--muted);padding-top:22px;border-top:1px solid var(--line)}
 
-  /* online products: small and quiet */
-  .online{padding-block:72px 96px;border-top:1px solid var(--line)}
+  /* ── online products: small and quiet ── */
+  .online{padding-block:72px 88px;border-top:1px solid var(--line)}
   .online-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 40px;margin-bottom:24px}
-  .online-head h3{font:500 22px/1.2 var(--serif)}
+  .online-head h3{font-size:22px}
   .online-head p{color:var(--muted);font-size:14px;max-width:32em}
   .online ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
   .online li{border-bottom:1px solid var(--line)}
@@ -124,33 +198,44 @@
   footer .legal{display:flex;flex-wrap:wrap;gap:6px 18px}
   footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 
-  /* motion: a slow, gentle fade, nothing more */
+  /* motion: one slow entrance, gentle reveals */
   @media (prefers-reduced-motion:no-preference){
-    .hero-copy > *, .portrait{animation:fade 1.4s cubic-bezier(.2,.6,.2,1) both}
-    .hero-copy > :nth-child(2){animation-delay:.15s}
-    .hero-copy > :nth-child(3){animation-delay:.3s}
-    .portrait{animation-delay:.2s}
+    .hero-copy > *, .portrait{animation:fade 1.3s cubic-bezier(.2,.6,.2,1) both}
+    .hero-copy > :nth-child(2){animation-delay:.12s}
+    .hero-copy > :nth-child(3){animation-delay:.24s}
+    .hero-copy > :nth-child(4){animation-delay:.36s}
+    .portrait{animation-delay:.18s}
     @supports (animation-timeline: view()){
-      .letter-text, .letter-photo, .contact .wrap{animation:fade linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+      .about-text, .pr-col, .fact, .steps li, .statement blockquote, .door{
+        animation:fade linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
     }
   }
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:.2;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-  @media (max-width:860px){
-    .hero-grid{grid-template-columns:1fr;gap:48px;padding-top:32px}
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:48px;padding-top:24px}
     .hero-copy{padding-bottom:0}
-    .portrait{max-width:380px;max-height:460px;justify-self:center}
-    .letter{grid-template-columns:1fr;gap:48px}
-    .letter-photo{position:static;max-width:420px;aspect-ratio:4/5}
+    .portrait{max-width:440px;max-height:540px}
+    .about,.pr-head,.how,.contact{grid-template-columns:1fr;gap:48px}
+    .about-photo{position:static;max-width:440px}
+    .pr-grid{grid-template-columns:1fr;gap:56px}
+    .facts .wrap{grid-template-columns:1fr 1fr}
+    .fact:nth-child(3){padding-left:0;border-left:0}
+    .fact:nth-child(n+3){border-top:1px solid var(--line)}
+    .how-photo{max-width:440px;aspect-ratio:4/5;order:-1}
+    .statement .inner{grid-template-columns:1fr}
+    .statement figure{min-height:380px}
     section{padding-block:88px}
   }
   @media (max-width:560px){
+    .hero nav{display:none}
+    .facts .wrap{grid-template-columns:1fr}
+    .fact,.fact + .fact{padding:28px 0;border-left:0}
+    .fact + .fact{border-top:1px solid var(--line)}
+    .door{padding:28px 22px}
     .online li > a{grid-template-columns:1fr auto;gap:4px 16px}
     .online .ins{grid-column:1;grid-row:2}
     .online .arr{grid-row:1 / span 2;align-self:center}
-    .contact-lines{gap:24px}
-    .contact-line{flex-direction:column;align-items:center;gap:6px}
-    .contact-line small{text-align:center;min-width:0}
   }
 </style>
 </head>
@@ -160,55 +245,133 @@
   <div class="wrap">
     <header>
       <a class="wordmark" href="#">Bartosz Śliwecki<span>.</span></a>
+      <nav aria-label="Sekcje">
+        <a href="#o-mnie">O mnie</a>
+        <a href="#jak-pracuje">Jak pracuję</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
     </header>
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Doradca ubezpieczeniowy</span>
-        <h1>Najlepszy moment, by zadbać o bliskich, to ten, gdy jesteś <em>zdrowy i spokojny</em>.</h1>
-        <p class="hero-note">Pomagam zaplanować ochronę finansową dla siebie i rodziny. Spokojnie, bez pośpiechu.</p>
+        <span class="eyebrow">Doradca ubezpieczeniowy · Białystok</span>
+        <h1>Ubezpieczenie zaczyna się od <em>zaufania</em>.</h1>
+        <p class="hero-lead">Pracuję z ludźmi, którzy chcą świadomie zadbać o siebie i swoich bliskich. Poznaję ich historię, zanim cokolwiek zaproponuję, i zostaję obok na lata.</p>
+        <div class="creds">
+          <span>Agent w rejestrze <b>KNF</b> · <a href="https://rpu.knf.gov.pl/search/agentsEmployee/11769310%2FP/364263" target="_blank" rel="noopener">RAU 11769310/P</a></span>
+          <span>Współpraca z <b>OVB</b></span>
+        </div>
       </div>
       <figure class="portrait">
         <img src="bartosz-portret.webp" alt="Bartosz Śliwecki, doradca ubezpieczeniowy" width="1100" height="1100">
+        <figcaption>Bartosz Śliwecki<small>Białystok</small></figcaption>
       </figure>
     </div>
   </div>
 </div>
 
 <main>
-  <section>
-    <div class="wrap letter">
-      <figure class="letter-photo"><img src="bartosz-biurko.webp" alt="Bartosz Śliwecki przy biurku z kalendarzem" width="1400" height="2097" loading="lazy"></figure>
-      <div class="letter-text">
-        <span class="eyebrow">Kilka słów ode mnie</span>
-        <h2>Ubezpieczenie to rozmowa o tym, co dla Ciebie najważniejsze.</h2>
-        <p>Nie zaczynam od produktów. Zaczynam od Ciebie: od rodziny, od zobowiązań i od tego, co chcesz chronić. Każda rodzina ma inne potrzeby i inne obawy, więc dopiero kiedy je poznam, szukamy rozwiązań.</p>
-        <p>Pomagam zabezpieczyć <strong>życie i rodzinę</strong>, <strong>zdrowie</strong>, <strong>dochód</strong> na czas, gdy choroba lub wypadek nie pozwala pracować, oraz <strong>spłatę kredytu</strong>, żeby bliscy nie zostali z nią sami.</p>
-        <p>Propozycje porównuję tak, żeby różnice w zakresie i cenie były jasne. Decyzję podejmujesz w swoim tempie. A gdy polisa jest już podpisana, nadal jestem do dyspozycji, kiedy pojawią się pytania.</p>
-        <hr class="rule">
+  <section id="o-mnie">
+    <div class="wrap about">
+      <figure class="about-photo">
+        <div class="frame"><img src="bartosz-biurko.webp" alt="Bartosz Śliwecki przy biurku z kalendarzem" width="1400" height="2097" loading="lazy"></div>
+        <figcaption>Każda współpraca zaczyna się od rozmowy, nie od oferty.</figcaption>
+      </figure>
+      <div class="about-text">
+        <span class="eyebrow">O mnie</span>
+        <h2>Nie sprzedaję polis. <em>Buduję relacje</em>, które trwają.</h2>
+        <p class="first">Ubezpieczenie ma sens dopiero wtedy, gdy w trudnym momencie ktoś odbierze telefon i wie, o kogo chodzi.</p>
+        <p><span class="ph">[Twoja historia, 2–3 zdania: skąd jesteś, od kiedy doradzasz i co Cię do tego przyprowadziło.]</span></p>
+        <p>Dlatego nie zaczynam od produktów. Zaczynam od człowieka: od rodziny, od zobowiązań i od tego, czego ktoś naprawdę się obawia. Dopiero kiedy to rozumiem, szukamy rozwiązań dla <b>życia i rodziny</b>, <b>zdrowia</b>, <b>dochodu</b> i <b>spłaty kredytu</b>.</p>
+        <p>Nie pracuję z każdym. Pracuję z osobami, które chcą to zrobić dobrze i są gotowe poświęcić na to chwilę uwagi. Wtedy mogę dać z siebie wszystko.</p>
         <p class="sign">Bartosz Śliwecki</p>
       </div>
     </div>
   </section>
 
-  <section class="contact" id="kontakt">
-    <div class="wrap narrow">
-      <span class="eyebrow">Kontakt</span>
-      <h2>Jeśli chcesz porozmawiać, odezwij się.</h2>
-      <p class="intro">Pierwsza rozmowa służy temu, żeby się poznać i zrozumieć Twoją sytuację. Bez presji i bez zobowiązań.</p>
-      <div class="contact-lines">
-        <div class="contact-line">
-          <small>Telefon</small>
-          <a id="phone-link" data-tel href="#kontakt">…</a>
-          <button class="copy" type="button" data-copy="phone">kopiuj</button>
+  <section class="principles">
+    <div class="wrap">
+      <div class="pr-head">
+        <div>
+          <span class="eyebrow">Zasady</span>
         </div>
-        <div class="contact-line">
-          <small>E-mail</small>
-          <a id="email-link" data-mail href="#kontakt">…</a>
-          <button class="copy" type="button" data-copy="email">kopiuj</button>
+        <h2>Na czym mi zależy i czego nie robię.</h2>
+      </div>
+      <div class="pr-grid">
+        <div class="pr-col yes">
+          <h3>Na czym mi zależy</h3>
+          <ul>
+            <li><div><b>Rozumiem, zanim doradzę</b><span>Najpierw słucham. Propozycja powstaje z Twojej sytuacji, nie z cennika.</span></div></li>
+            <li><div><b>Jasne porównanie</b><span>Pokazuję różnice w zakresie i cenie tak, żebyś mógł zdecydować sam.</span></div></li>
+            <li><div><b>Jestem po podpisaniu</b><span>Przegląd polisy, gdy zmienia się życie. Pomoc, gdy trzeba z niej skorzystać.</span></div></li>
+          </ul>
+        </div>
+        <div class="pr-col no">
+          <h3>Czego nie robię</h3>
+          <ul>
+            <li><div><b>Nie naciskam</b><span>Decyzję podejmujesz w swoim tempie. Nic nie podpisujemy na pierwszym spotkaniu.</span></div></li>
+            <li><div><b>Nie proponuję zbędnych rzeczy</b><span>Jeśli czegoś nie potrzebujesz, usłyszysz to ode mnie wprost.</span></div></li>
+            <li><div><b>Nie obiecuję na wyrost</b><span>Gdy nie będę mógł pomóc, powiem to i wskażę, gdzie szukać dalej.</span></div></li>
+          </ul>
         </div>
       </div>
-      <p class="reg">Agent wpisany do rejestru KNF, nr RAU 11769310/P ·
-        <a href="https://rpu.knf.gov.pl/search/agentsEmployee/11769310%2FP/364263" target="_blank" rel="noopener">sprawdź w rejestrze</a></p>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Fakty">
+    <div class="wrap">
+      <div class="fact"><strong>KNF</strong><span>Agent wpisany do rejestru, nr <a href="https://rpu.knf.gov.pl/search/agentsEmployee/11769310%2FP/364263" target="_blank" rel="noopener">11769310/P</a></span></div>
+      <div class="fact"><strong>OVB</strong><span>Współpraca z międzynarodową grupą doradztwa finansowego</span></div>
+      <div class="fact"><strong><span class="ph">[liczba]</span> lat</strong><span>doświadczenia w doradztwie <span class="ph">[do potwierdzenia]</span></span></div>
+      <div class="fact"><strong>Białystok</strong><span>Spotkania na miejscu <span class="ph">[i online?]</span></span></div>
+    </div>
+  </section>
+
+  <section id="jak-pracuje">
+    <div class="wrap how">
+      <div class="how-text">
+        <span class="eyebrow">Jak pracuję</span>
+        <h2>Pierwsza rozmowa to <em>poznanie się</em>, nie sprzedaż.</h2>
+        <p>Spotykamy się, żeby sprawdzić, czy w ogóle mogę Ci pomóc. Jeśli nie, rozstajemy się w dobrej atmosferze. Jeśli tak, robimy to krok po kroku.</p>
+        <ol class="steps">
+          <li><span class="n">i.</span><div><h3>Rozmowa</h3><p>Poznaję Twoją sytuację: rodzinę, zobowiązania i to, co chcesz chronić. Bez żadnych zobowiązań.</p></div></li>
+          <li><span class="n">ii.</span><div><h3>Analiza</h3><p>Przygotowuję propozycje i porównuję je tak, żeby różnice w zakresie i cenie były jasne.</p></div></li>
+          <li><span class="n">iii.</span><div><h3>Decyzja</h3><p>Wybierasz w swoim tempie. Po podpisaniu polisy nadal jestem do dyspozycji, gdy pojawią się pytania.</p></div></li>
+        </ol>
+      </div>
+      <figure class="how-photo"><img src="bartosz-analiza.webp" alt="Bartosz Śliwecki przegląda broszurę Analiza Potrzeb Klienta" width="900" height="1360" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="statement" aria-label="Myśl przewodnia">
+    <div class="inner">
+      <figure><img src="bartosz-laptop.webp" alt="Praca przy laptopie z broszurami OVB na stole" width="1000" height="1522" loading="lazy"></figure>
+      <div class="words">
+        <span class="eyebrow" style="color:var(--on-navy-muted)">Dlaczego to robię</span>
+        <blockquote>Polisę podpisuje się raz. <em>Być obok</em> trzeba latami.</blockquote>
+        <p>Najważniejsza chwila w tej pracy nie przychodzi przy podpisaniu umowy. Przychodzi wtedy, gdy ktoś naprawdę potrzebuje pomocy i wie, do kogo zadzwonić.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap contact">
+      <div class="contact-text">
+        <span class="eyebrow">Kontakt</span>
+        <h2>Jeśli chcesz to przemyśleć razem, <em>napisz do mnie</em>.</h2>
+        <p>Odpowiadam osobiście. Napisz kilka zdań o tym, co chcesz zabezpieczyć, a zaproponuję termin rozmowy.</p>
+        <p>Nie każda rozmowa kończy się współpracą. To w porządku, bo obu stronom powinno na niej zależeć.</p>
+      </div>
+      <div class="door">
+        <div class="door-row">
+          <small>E-mail</small>
+          <div class="line"><a id="email-link" data-mail href="#kontakt">…</a><button class="copy" type="button" data-copy="email">kopiuj</button></div>
+        </div>
+        <div class="door-row">
+          <small>Telefon</small>
+          <div class="line"><a id="phone-link" data-tel href="#kontakt">…</a><button class="copy" type="button" data-copy="phone">kopiuj</button></div>
+        </div>
+        <p class="note">Jeśli nie odbiorę, oddzwonię. Zwykle jestem w trakcie rozmowy z kimś innym.</p>
+      </div>
     </div>
   </section>
 
@@ -216,7 +379,7 @@
     <div class="wrap">
       <div class="online-head">
         <h3>Do kupienia online</h3>
-        <p>Kilka ubezpieczeń możesz kupić samodzielnie przez internet. Linki prowadzą prosto do stron towarzystw.</p>
+        <p>Kilka prostych ubezpieczeń możesz kupić samodzielnie przez internet. Linki prowadzą prosto do stron towarzystw.</p>
       </div>
       <ul>
         <li><a href="https://www.uniqa.pl/kalkulator/ubezpieczenie-szkolne-nnw/insurance?PartnerType=PA&amp;PartnerId1=872184&amp;PartnerId2=LP" target="_blank" rel="noopener">
